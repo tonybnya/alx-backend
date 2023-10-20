@@ -33,4 +33,7 @@ def index_range(page: int, page_size: int) -> Tuple[int]:
     :param page_size: integer
     :return: a tuple of start index and end index
     """
-    pass
+    end = page * page_size
+    start = end - page_size
+
+    return start, end
