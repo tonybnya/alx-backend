@@ -65,9 +65,3 @@ class Server:
             return []
 
         return dataset[start:end]
-
-
-        # if start > n:
-        #     return []
-        #
-        # return dataset[start, end]
