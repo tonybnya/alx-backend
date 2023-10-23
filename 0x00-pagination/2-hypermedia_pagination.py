@@ -72,7 +72,7 @@ class Server:
         data = self.get_page(page, page_size)
         size = len(data)
 
-        # Set some values of the dict
+        # Set some values for the dict
         next_page = page + 1 if size > 0 else None
         prev_page = page - 1 if page > 1 else None
         total_pages = (n + page_size - 1) // page_size
