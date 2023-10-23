@@ -82,7 +82,7 @@ class Server:
         prev_page = page - 1 if page > 1 else None
         total_pages = round(n / size) if size > 0 else ceil(n / page_size)
 
-        # Update the dict
+        # Return the dict
         pages.update(
             {
                 "page_size": size,
@@ -90,7 +90,7 @@ class Server:
                 "data": data,
                 "next_page": next_page,
                 "prev_page": prev_page,
-                "total_pages": total_pages,
+                "total_pages": total_pages
             }
         )
 
