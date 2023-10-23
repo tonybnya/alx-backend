@@ -3,7 +3,6 @@
 Simple pagination
 """
 import csv
-from math import ceil
 from typing import Any, Dict, List, Tuple
 
 
@@ -27,8 +26,7 @@ def index_range(page: int, page_size: int) -> Tuple[int]:
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
-    """
+    """Server class to paginate a database of popular baby names."""
 
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -87,5 +85,5 @@ class Server:
             "data": data,
             "next_page": next_page,
             "prev_page": prev_page,
-            "total_pages": total_pages
+            "total_pages": total_pages,
         }
