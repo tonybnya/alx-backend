@@ -66,9 +66,6 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Get info of some pages"""
-        # Set an empty dict
-        pages = {}
-
         # Get the entire dataset
         dataset = self.dataset()
         n = len(dataset)
@@ -80,18 +77,15 @@ class Server:
         # Set some values of the dict
         next_page = page + 1 if size > 0 else None
         prev_page = page - 1 if page > 1 else None
-        total_pages = round(n / size) if size > 0 else ceil(n / page_size)
+        total_pages = (n + page_size - 1) // page_size
+        # total_pages = round(n / size) if size > 0 else ceil(n / page_size)
 
         # Return the dict
-        pages.update(
-            {
-                "page_size": size,
-                "page": page,
-                "data": data,
-                "next_page": next_page,
-                "prev_page": prev_page,
-                "total_pages": total_pages
-            }
-        )
-
-        return pages
+        return {
+            "page_size": size,
+            "page": page,
+            "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
+        }
