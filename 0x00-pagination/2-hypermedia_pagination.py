@@ -63,30 +63,19 @@ class Server:
         return dataset[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
-        """Get info of some pages"""
+        """Returns an object"""
         # Use assert to verify if both arguments are integers greater than 0
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
 
-        # Get the entire dataset
-        dataset = self.dataset()
-        n = len(dataset)
-
-        # Get the dataset to paginate
-        data = self.get_page(page, page_size)
-        size = len(data)
-
-        # Set some values for the dict
-        next_page = page + 1 if size > 0 else None
+        total_pages = int(len(self.dataset()) / page_size)
+        next_page = page + 1 if (page + 1) < total_pages else None
         prev_page = page - 1 if page > 1 else None
-        total_pages = (n + page_size - 1) // page_size
-        # total_pages = round(n / size) if size > 0 else ceil(n / page_size)
 
-        # Return the dict
         return {
-            "page_size": size,
+            "page_size": len(self.get_page(page, page_size)),
             "page": page,
-            "data": data,
+            "data": self.get_page(page, page_size),
             "next_page": next_page,
             "prev_page": prev_page,
             "total_pages": total_pages,
