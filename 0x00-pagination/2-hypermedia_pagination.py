@@ -64,6 +64,10 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Get info of some pages"""
+        # Use assert to verify if both arguments are integers greater than 0
+        assert isinstance(page, int) and isinstance(page_size, int)
+        assert page > 0 and page_size > 0
+
         # Get the entire dataset
         dataset = self.dataset()
         n = len(dataset)
