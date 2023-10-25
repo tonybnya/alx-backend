@@ -6,7 +6,7 @@ from typing import Union
 
 
 class BasicCache(BaseCaching):
-    """BasicCache inherist from BaseCaching
+    """BasicCache inherits from BaseCaching
     - implements a 'put' method
     - implements a 'get' method
     """
