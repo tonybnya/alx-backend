@@ -7,8 +7,7 @@ from typing import Union
 
 
 class FIFOCache(BaseCaching):
-    """FIFOCache inherits from BaseCaching
-    """
+    """FIFOCache inherits from BaseCaching"""
 
     def __init__(self):
         """Initialize this child class using the parent class"""
@@ -20,7 +19,6 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
 
-        # self.cache_data.update({key, item})
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
