@@ -21,7 +21,7 @@ class FIFOCache(BaseCaching):
 
         self.cache_data[key] = item
 
-        if len(self.cache_data) == BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             popped_key, _ = self.cache_data.popitem(last=False)
             print(f"DISCARD: {popped_key}")
 
