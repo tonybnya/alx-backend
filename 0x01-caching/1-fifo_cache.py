@@ -21,9 +21,9 @@ class FIFOCache(BaseCaching):
 
         self.cache_data[key] = item
 
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) == BaseCaching.MAX_ITEMS:
             popped_key, _ = self.cache_data.popitem(last=False)
-            print("Discard: {}".format(popped_key))
+            print(f"DISCARD: {popped_key}")
 
     def get(self, key: str) -> Union[None, str]:
         """Get the value from the cache linked to key"""
