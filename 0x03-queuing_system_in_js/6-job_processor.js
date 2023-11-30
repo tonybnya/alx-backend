@@ -1,0 +1,14 @@
+const kue = require('kue');
+
+const log = (arg) => console.log(arg);
+
+const queue = kue.createQueue();
+
+const sendNotification = (phoneNumber, message) => {
+  log(`Sending notification to ${phoneNumber}, with message: ${message}`);
+};
+
+queue.process('push_notification_code', (job, done) => {
+  sendNotification(job.data.phoneNumber, job.data.message);
+  done();
+});
